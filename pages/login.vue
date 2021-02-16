@@ -1,16 +1,17 @@
 <template >
   <div class="flex flex-col h-screen bg-white<">
-    <div class="grid place-items-center mx-2 my-20 ">
+    <div class="grid place-items-center mx-2 my-20">
       <div class="bg-white p-12 px-6 py-10 rounded-md w-1/4">
         <Logo class="mx-auto" />
 
-        <form class="mt-10">
+        <form class="mt-10" @submit.prevent="userLogin">
           <div class="flex flex-col">
             <label for="email" class="my-2">Email</label>
             <input
               type="email"
               name="email"
               class="border rounded-md px-3 py-3"
+              v-model="login.email"
               required
             />
           </div>
@@ -26,6 +27,7 @@
               type="password"
               name="password"
               class="border rounded-md px-3 py-3"
+              v-model="login.password"
               required
             />
           </div>
@@ -50,9 +52,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      login: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    async userLogin() {
+      try {
+        let { data } = await this.$auth.loginWith("local", {
+          data: this.login,
+        });
+        console.log(data);
+        this.$auth.strategy.token.set(data.access_token)
+        this.$auth
+          .setUserToken(data.access_token)
+          .then(() => this.$toast.success("User set!"));
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+};
 </script>
 
 
 
-</style>
+

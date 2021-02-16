@@ -1,3 +1,4 @@
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -33,7 +34,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-
+    '~/plugins/Api.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -49,9 +50,44 @@ export default {
   modules: [
 
     // '@nuxjs/axios',
-    '@nuxtjs/auth'
+    // '@nuxtjs/auth'
+
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
+
 
   ],
+  axios: {
+    baseURL :'https://fchallenge.talently.tech/api'
+  },
+  // router: {
+  //   middleware: ['auth']
+  // },
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/auth/login', method: 'post',  },
+          user: { url: '/auth/me', method: 'post' }
+        }
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: '/login',
+      home: '/curso'
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

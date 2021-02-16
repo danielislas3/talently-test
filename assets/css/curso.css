@@ -29,6 +29,10 @@
   font-size: 20px;
   line-height: 22px;
 }
+.curso_video_img_progresso {
+ width: 25px;
+ height: 25px;
+}
 
 .elipse {
   width: 22.03px;

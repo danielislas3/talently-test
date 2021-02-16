@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex justify-between">
-      <div class="border w-2/3 mr-12">
+      <div class="w-2/3 mr-12">
         <div class="">
           <iframe
             src="https://player.vimeo.com/video/39619054"
@@ -11,22 +11,24 @@
           ></iframe>
         </div>
         <div class="bg-white mb-6 rounded-sm p-6">
-          
           <p class="curso_video_item_title_section text-5xl mb-2">Clase 3</p>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore ipsum quia nulla, fugit sit unde magni quos ad soluta, architecto sunt laboriosam officia! Asperiores officiis deleniti fuga error, sunt voluptatum.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore ipsum quia nulla, fugit sit unde magni quos ad soluta, architecto sunt laboriosam officia! Asperiores officiis deleniti fuga error, sunt voluptatum.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore
+            ipsum quia nulla, fugit sit unde magni quos ad soluta, architecto
+            sunt laboriosam officia! Asperiores officiis deleniti fuga error,
+            sunt voluptatum. Lorem ipsum, dolor sit amet consectetur adipisicing
+            elit. Inventore ipsum quia nulla, fugit sit unde magni quos ad
+            soluta, architecto sunt laboriosam officia! Asperiores officiis
+            deleniti fuga error, sunt voluptatum.
           </p>
         </div>
         <div>
-              <Comentarios />
+          <Comentarios />
         </div>
       </div>
 
       <ListaContenido />
     </div>
-
-
   </div>
 </template>
 
