@@ -47,15 +47,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    ['nuxt-fontawesome', {
-      component: 'fa',
-      imports: [
-        {
-          set: '@fortawesome/free-solid-svg-icons',
-          icons: ['faDollarSign']
-        }
-      ]
-    }]
+
+    // '@nuxjs/axios',
+    '@nuxtjs/auth'
 
   ],
 
