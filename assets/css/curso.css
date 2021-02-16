@@ -1,0 +1,41 @@
+.curso_video_card {
+  width: 130px;
+  height: 80px;
+  left: 0%;
+  right: 42.67%;
+  top: 0%;
+  bottom: 0%;
+  background: #000000;
+  border-radius: 3.5px;
+}
+
+.curso_video_item_title_section {
+  width: 103px;
+  height: 30px;
+  left: 938px;
+  top: 95px;
+
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+}
+.curso_video_item_title {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 22px;
+}
+
+.elipse{
+
+width: 22.03px;
+height: 22.03px;
+left: 1226.03px;
+top: 344px;
+
+border: 2.54237px solid #30308C;
+box-sizing: border-box;
+transform: rotate(-180deg);
+}

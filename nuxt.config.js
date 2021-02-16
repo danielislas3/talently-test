@@ -10,10 +10,17 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' }
     ],
+    script: [
+      {
+        src: "https://kit.fontawesome.com/d0f3a0a8a2.js",
+        async: true,
+        crossorigin: "anonymous"
+      },
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: "preconnect", href: "https://fonts.gstatic.com" },
-      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"  }
+      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" }
     ]
   },
 
@@ -26,6 +33,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,6 +47,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    ['nuxt-fontawesome', {
+      component: 'fa',
+      imports: [
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['faDollarSign']
+        }
+      ]
+    }]
+
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
