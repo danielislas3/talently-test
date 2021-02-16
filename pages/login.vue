@@ -67,13 +67,10 @@ export default {
         let { data } = await this.$auth.loginWith("local", {
           data: this.login,
         });
-        console.log(data);
-        this.$auth.strategy.token.set(data.access_token)
-        this.$auth
-          .setUserToken(data.access_token)
-          .then(() => this.$toast.success("User set!"));
+        this.$auth.strategy.token.set(data.access_token);
+        this.$auth.setUserToken(data.access_token);
       } catch (err) {
-        console.log(err);
+        alert("Usuario o contraseña incorrectos");
       }
     },
   },

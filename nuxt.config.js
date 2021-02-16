@@ -60,24 +60,24 @@ export default {
   axios: {
     baseURL :'https://fchallenge.talently.tech/api'
   },
-  // router: {
-  //   middleware: ['auth']
-  // },
+  router: {
+    middleware: ['auth']
+  },
   auth: {
     strategies: {
       local: {
         token: {
           property: 'token',
           // required: true,
-          // type: 'Bearer'
+           type: 'Bearer'
         },
         user: {
-          property: 'user',
+          property: false,
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/auth/login', method: 'post',  },
-          user: { url: '/auth/me', method: 'post' }
+          login: { url: '/auth/login', method: 'post', propertyName:'access_token' },
+          user: { url: '/auth/me', method: 'post'}
         }
       }
     },

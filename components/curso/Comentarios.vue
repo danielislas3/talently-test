@@ -15,7 +15,6 @@ export default {
     Comentario,
     AgregarComentario
   },
-  layout: "clase",
 };
 </script>
 
