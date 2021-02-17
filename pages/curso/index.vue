@@ -11,23 +11,22 @@
           ></iframe>
         </div>
         <div class="bg-white mb-6 rounded-sm p-6">
-          <p class="curso_video_item_title_section text-5xl mb-2">Clase 3</p>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore
-            ipsum quia nulla, fugit sit unde magni quos ad soluta, architecto
-            sunt laboriosam officia! Asperiores officiis deleniti fuga error,
-            sunt voluptatum. Lorem ipsum, dolor sit amet consectetur adipisicing
-            elit. Inventore ipsum quia nulla, fugit sit unde magni quos ad
-            soluta, architecto sunt laboriosam officia! Asperiores officiis
-            deleniti fuga error, sunt voluptatum.
+          <p
+            class="curso_video_item_title_section text-5xl mb-2"
+            v-if="loading"
+          >
+            {{ videos[0].title }}
+          </p>
+          <p v-if="loading">
+            {{ videos[0].article.split("hic")[0] }}
           </p>
         </div>
         <div>
-          <Comentarios />
+          <Comentarios :comments="comments" />
         </div>
       </div>
 
-      <ListaContenido  />
+      <ListaContenido :videos="videos" />
     </div>
   </div>
 </template>
@@ -36,15 +35,34 @@
 import ListaContenido from "@/components/curso/ListaContenido";
 import Comentarios from "@/components/curso/Comentarios";
 
-
 export default {
   layout: "clase",
   components: {
     ListaContenido,
     Comentarios,
   },
-
+  created() {
+    this.$store.dispatch("fetchVideos");
+  },
   
+  async asyncData(context) {
+    const { data: comments } = await context.$axios.post(
+      `/content/${1}/comments`
+    );
+     return { comments:comments.comments };
+  },
+
+  computed: {
+    videos() {
+      return this.$store.getters["getVideos"];
+    },
+    loading() {
+      return this.videos[0] ? true : false;
+    },
+  },
+  data() {
+    return {};
+  },
 };
 </script>
 

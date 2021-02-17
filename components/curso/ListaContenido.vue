@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white rounded-sm w-1/3 p-6 h-full">
+  <div class="bg-white rounded-sm w-1/3 p-6 h-full" v-cloak>
     <h3 class="curso_video_item_title_section text-5xl">Contenido</h3>
-    <div v-for="(item, index) in videos.videos" :key="index">
+    <div v-for="(item, index) in videos" :key="index">
       <VideoItem :video="item" />
     </div>
   </div>
@@ -12,19 +12,25 @@ import VideoItem from "@/components/curso/VideoItem";
 import { mapState, mapActions } from "vuex";
 
 export default {
-  created() {
-    this.$store.dispatch("videos/fetchVideos");
+  props:{
+    videos:{}
   },
-   computed: {
-    ...mapState(["videos"])
-  },
+  // created() {
+  //   this.$store.dispatch("fetchVideos");
+  // },
+  // computed: {
+  //   // ...mapState(["videos"]),
+  //    videos() {
+  //           return this.$store.getters['getVideos']
+  //       }
+  // },
+
   components: {
     VideoItem,
   },
 
   data() {
     return {
-
     };
   },
 };

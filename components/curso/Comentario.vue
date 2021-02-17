@@ -2,17 +2,17 @@
   <div class="bg-white rounded flex p-2 pt-4">
     <i class="fas fa-user-circle text-4xl m-2 text-gray-700"></i>
 
-    <div>
+    <div class="w-full">
       <div class="flex justify-between">
-        <p class="ml-6 curso_comment_name">User <span>1 Hora</span></p>
+        <p class="ml-6 curso_comment_name">{{ comment.user.name }} <span>{{ $moment(comment.created_at).fromNow() }}</span></p>
 
         <div class="dropdown">
           <i
-            class="fas fa-ellipsis-v text-gray-700 cursor-pointer mr-1"
+            class="fas fa-ellipsis-v text-gray-700 cursor-pointer mr-4"
             @click="showDropdown"
           ></i>
           <div class="dropdown-content p-2" id="dropdown">
-            <p class="m-2 ml cursor-pointer ">
+            <p class="m-2 ml cursor-pointer">
               <i class="far fa-edit"></i>
               <span class="ml-4">Editar</span>
             </p>
@@ -23,11 +23,8 @@
           </div>
         </div>
       </div>
-      <p class="m-2 w-full pl-4 p-2">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente odit
-        soluta autem illo expedita natus dolor, dignissimos consequuntur numquam
-        obcaecati odio illum sequi assumenda qui consequatur. Veniam nostrum
-        iusto similique.
+      <p class="m-2 pl-4 p-2">
+       {{comment.content}}
       </p>
     </div>
   </div>
@@ -35,6 +32,9 @@
 
 <script>
 export default {
+  props: {
+    comment: {},
+  },
   methods: {
     showDropdown() {
       let elementt = document.querySelector("#dropdown");

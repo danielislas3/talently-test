@@ -1,9 +1,11 @@
 <template>
-  <div class="flex my-6 justify-between">
+  <div class="flex my-6 justify-between" v-cloak>
     <div class="flex">
-      <div class="curso_video_card flex justify-center cursor-pointer">
-        <i class="mt-5 fas fa-play-circle text-white text-4xl"></i>
-      </div>
+      <nuxt-link :to="`/curso/${video.id}`">
+        <div class="curso_video_card flex justify-center cursor-pointer">
+          <i class="mt-5 fas fa-play-circle text-white text-4xl"></i>
+        </div>
+      </nuxt-link>
 
       <div class="mt-3 ml-5">
         <p class="curso_video_item_title mb-3">{{ video.title }}</p>
