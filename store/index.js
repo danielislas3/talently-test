@@ -22,7 +22,7 @@ export const actions = {
     }
   },
   async fetchComentarios({ commit }, videoId) {
-   
+
     try {
       let { data } = await this.$axios.post(`/content/${videoId}/comments`)
 
@@ -36,9 +36,19 @@ export const actions = {
   async agregarComentario({ commit }, payload) {
     try {
       let { data } = await this.$axios.post('/comment/create', payload)
-      console.log('data: ', data.message);
-
       commit('setNewComment', data.message)
+    } catch (error) {
+      console.log('error: ', error);
+
+    }
+  },
+  async eliminarComentario({ commit }, comment) {
+    try {
+      let { data } = await this.$axios.delete('/comment/' + comment.id)
+      if (data[0]) {
+
+        commit('deleteComment', comment)
+      }
     } catch (error) {
       console.log('error: ', error);
 
@@ -64,17 +74,22 @@ export const mutations = {
   setVideos(state, content) {
     return state.videos = content
   },
-  setComentarios(state, comentarios) {
-    return state.comentarios = comentarios
-  },
   setVideoActual(state, id) {
 
     const video = state.videos.filter(video => video.id == id)
     return state.video = video[0]
   },
+  setComentarios(state, comentarios) {
+    return state.comentarios = comentarios
+  },
+
   setNewComment(state, payload) {
     payload.user = state.auth.user
     state.comentarios.push(payload)
     return state.newComment = payload
+  },
+  deleteComment(state, payload) {
+    const index = state.comentarios.findIndex(comment => comment.id === payload.id)
+    state.comentarios.splice(index, 1)
   },
 }

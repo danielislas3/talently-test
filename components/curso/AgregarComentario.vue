@@ -31,16 +31,7 @@ export default {
       });
       this.content=null
     },
-    // callEvent() {
-    //   console.log("Event called");
-    // },
-    // mounted() {
-    //   window.addEventListener("keyup", function (event) {
-    //     if (event.keyCode === 13) {
-    //       app.callEvent();
-    //     }
-    //   });
-    // },
+
   },
 };
 </script>

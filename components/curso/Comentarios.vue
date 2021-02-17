@@ -14,6 +14,8 @@
 import Comentario from "@/components/curso/Comentario";
 import AgregarComentario from "@/components/curso/AgregarComentario";
 
+
+
 export default {
   components: {
     Comentario,
@@ -27,6 +29,7 @@ export default {
       return this.comments.length;
     },
   },
+
 };
 </script>
 

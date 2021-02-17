@@ -21,7 +21,9 @@
             </p>
             <p class="m-2 ml cursor-pointer">
               <i class="far fa-trash-alt"></i>
-              <span class="ml-5">Eliminar</span>
+              <span class="ml-5" @click="eliminarComentario(comment)"
+                >Eliminar</span
+              >
             </p>
           </div>
         </div>
@@ -34,6 +36,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   props: {
     comment: {},
@@ -43,11 +46,13 @@ export default {
       return this.$auth.user.id == this.comment.user_id;
     },
     commentName() {
-      return this.comment!=undefined ? this.comment.user.name
+      return this.comment != undefined
+        ? this.comment.user.name
         : this.$auth.user.name;
     },
   },
   methods: {
+    ...mapActions(["eliminarComentario"]),
     showDropdown() {
       let elementt = document.querySelector("#dropdown");
       console.log(elementt);
