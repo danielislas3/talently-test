@@ -12,26 +12,16 @@ import VideoItem from "@/components/curso/VideoItem";
 import { mapState, mapActions } from "vuex";
 
 export default {
-  props:{
-    videos:{}
+  props: {
+    videos: {},
   },
-  // created() {
-  //   this.$store.dispatch("fetchVideos");
-  // },
-  // computed: {
-  //   // ...mapState(["videos"]),
-  //    videos() {
-  //           return this.$store.getters['getVideos']
-  //       }
-  // },
 
   components: {
     VideoItem,
   },
 
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>

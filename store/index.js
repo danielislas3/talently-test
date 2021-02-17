@@ -62,7 +62,6 @@ export const actions = {
     }
   },
   async updateProgress({ commit }, payload) {
-    console.log(payload);
     try {
       let { data } = await this.$axios.post(
         `/content/${payload.videoId}/progress`,
@@ -71,7 +70,6 @@ export const actions = {
         }
         );
         
-      console.log('data: ', data.content);
        if (data.content) {
          commit("updateVideo", data.content);
       }
@@ -126,6 +124,6 @@ export const mutations = {
     const index = state.videos.findIndex(
       video => video.id == payload.id
     );
-    state.comentarios[index].content = payload.content;
+    state.videos[index].progress = payload.progress;
   }
 };

@@ -49,7 +49,6 @@ export default {
     this.watchVimeo();
   },
   beforeDestroy() {
-    console.log("ACTUALIZANDO ESTADO");
     this.updateProgress({
       videoId: this.$route.params.id,
       progress: this.progress,
@@ -99,11 +98,11 @@ export default {
       this.duration = duration;
     },
     setNewProgress() {
-      console.log("ACTUALIZANDO ESTADO");
       this.updateProgress({
         videoId: this.$route.params.id,
         progress: this.progress,
       });
+      this.videos()
     },
   },
 };

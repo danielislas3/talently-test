@@ -72,7 +72,6 @@ export default {
     ...mapActions(["eliminarComentario", "updateComentario"]),
     showDropdown() {
       let elementt = document.querySelector(`#drop${this.comment.id}`);
-      console.log(elementt);
       elementt.classList.toggle("show");
 
       window.onclick = function (event) {
