@@ -2,11 +2,12 @@
   <div>
     <div class="flex justify-between">
       <div class="w-2/3 mr-12">
-        <div class="">
+        <div >
           <iframe
+          class="w-full"
             src="https://player.vimeo.com/video/39619054"
-            width="720"
-            height="360"
+            width="1000"
+            height="465"
             controls
           ></iframe>
         </div>

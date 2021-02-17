@@ -9,7 +9,6 @@
 
 <script>
 import VideoItem from "@/components/curso/VideoItem";
-import { mapState, mapActions } from "vuex";
 
 export default {
   props: {
