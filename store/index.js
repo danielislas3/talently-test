@@ -54,6 +54,21 @@ export const actions = {
 
     }
   },
+  async updateComentario({ commit }, payload) {
+    console.log(payload);
+    try {
+      let { data } = await this.$axios.post(`/comment/${payload.comment.id}/update`, { content: payload.content })
+      if (data[0]) {
+
+        commit('updateComment', data[0])
+      }
+
+
+    } catch (error) {
+      console.log('error: ', error);
+
+    }
+  },
 
 
 }
@@ -91,5 +106,11 @@ export const mutations = {
   deleteComment(state, payload) {
     const index = state.comentarios.findIndex(comment => comment.id === payload.id)
     state.comentarios.splice(index, 1)
+  },
+  updateComment(state, payload) {
+    const index = state.comentarios.findIndex(comment => comment.id == payload.id)
+    console.log('index: ', index);
+    
+    state.comentarios[index].content = payload.content
   },
 }
