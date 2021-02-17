@@ -43,18 +43,17 @@ export default {
   },
   created() {
     this.$store.dispatch("fetchVideos");
+    this.$store.dispatch("fetchComentarios",1);
+
   },
   
-  async asyncData(context) {
-    const { data: comments } = await context.$axios.post(
-      `/content/${1}/comments`
-    );
-     return { comments:comments.comments };
-  },
 
   computed: {
     videos() {
       return this.$store.getters["getVideos"];
+    },
+    comments() {
+      return this.$store.getters["getComentarios"];
     },
     loading() {
       return this.videos[0] ? true : false;

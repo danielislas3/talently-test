@@ -4,9 +4,12 @@
 
     <div class="w-full">
       <div class="flex justify-between">
-        <p class="ml-6 curso_comment_name">{{ comment.user.name }} <span>{{ $moment(comment.created_at).fromNow() }}</span></p>
+        <p class="ml-6 curso_comment_name">
+          {{ commentName }}
+          <span>{{ $moment(comment.created_at).fromNow() }}</span>
+        </p>
 
-        <div class="dropdown">
+        <div class="dropdown" v-if="isMyComment">
           <i
             class="fas fa-ellipsis-v text-gray-700 cursor-pointer mr-4"
             @click="showDropdown"
@@ -24,7 +27,7 @@
         </div>
       </div>
       <p class="m-2 pl-4 p-2">
-       {{comment.content}}
+        {{ comment.content }}
       </p>
     </div>
   </div>
@@ -34,6 +37,15 @@
 export default {
   props: {
     comment: {},
+  },
+  computed: {
+    isMyComment() {
+      return this.$auth.user.id == this.comment.user_id;
+    },
+    commentName() {
+      return this.comment!=undefined ? this.comment.user.name
+        : this.$auth.user.name;
+    },
   },
   methods: {
     showDropdown() {

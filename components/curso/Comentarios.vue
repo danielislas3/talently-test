@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-white my-4 bg-primary">
     <p class="curso_video_item_title_section w-full my-6">
-      {{ 2 }} Comentarios
+      {{ commentsCount }} Comentarios
     </p>
     <AgregarComentario class="my-6" />
     <div v-for="(item, index) in comments" :key="index">
@@ -20,7 +20,12 @@ export default {
     AgregarComentario,
   },
   props: {
-    comments: [],
+    comments: null,
+  },
+  computed: {
+    commentsCount() {
+      return this.comments.length;
+    },
   },
 };
 </script>

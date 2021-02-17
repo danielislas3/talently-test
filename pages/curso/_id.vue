@@ -43,16 +43,15 @@ export default {
   },
   created() {
     this.$store.commit("setVideoActual", this.$route.params.id);
+    this.$store.dispatch("fetchComentarios",this.$route.params.id);
   },
-  async asyncData(context) {
-    const { data: comments } = await context.$axios.post(
-      `/content/${context.params.id}/comments`
-    );
-    return { comments:comments.comments };
-  },
+
   computed: {
     videos() {
       return this.$store.getters["getVideos"];
+    },
+     comments() {
+      return this.$store.getters["getComentarios"];
     },
     video: {
       get() {
