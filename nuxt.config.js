@@ -27,6 +27,7 @@ export default {
       { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" }
     ]
   },
+  target: 'static',
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
