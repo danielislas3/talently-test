@@ -14,7 +14,7 @@
     </div>
     <!-- <i class="fas fa-check-circle text-4xl ml-2 mt-6 primary-color"></i> -->
     <img
-      src="~/assets/img/50.png"
+      :src="require(`~/assets/img/${imgProgress}.png`)"
       class="curso_video_img_progresso mt-6"
       alt="progreso"
     />
@@ -25,6 +25,21 @@
 export default {
   props: {
     video: {},
+  },
+  computed: {
+    imgProgress() {
+      const x = this.video.progress;
+      switch (true) {
+        case x <= 2:
+          return 0;
+        case x >= 3 && x < 5:
+          return 25;
+        case x >= 5 && x < 7:
+          return 50;
+        case x >= 7 && x < 10:
+          return 75;
+      }
+    },
   },
 };
 </script>

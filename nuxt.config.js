@@ -17,6 +17,9 @@ export default {
         async: true,
         crossorigin: "anonymous"
       },
+      {
+        src: "https://player.vimeo.com/api/player.js",
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

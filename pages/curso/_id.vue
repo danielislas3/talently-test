@@ -43,14 +43,24 @@ export default {
   },
   created() {
     this.$store.commit("setVideoActual", this.$route.params.id);
-    this.$store.dispatch("fetchComentarios",this.$route.params.id);
+    this.$store.dispatch("fetchComentarios", this.$route.params.id);
+  },
+  mounted() {
+    this.watchVimeo();
+  },
+  beforeDestroy() {
+    console.log("ACTUALIZANDO ESTADO");
+    this.updateProgress({
+      videoId: this.$route.params.id,
+      progress: this.progress,
+    });
   },
 
   computed: {
     videos() {
       return this.$store.getters["getVideos"];
     },
-     comments() {
+    comments() {
       return this.$store.getters["getComentarios"];
     },
     video: {
@@ -60,7 +70,41 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      duration: null,
+      progress: 0,
+    };
+  },
+  methods: {
+    ...mapActions(["updateProgress"]),
+
+    async watchVimeo() {
+      const iframe = document.querySelector("iframe");
+      const player = new Vimeo.Player(iframe);
+
+      player.on("play", ({ percent }) => {
+        this.progress = Math.round(percent * 10);
+        this.setNewProgress();
+      });
+      player.on("pause", ({ percent }) => {
+        this.progress = Math.round(percent * 10);
+        this.setNewProgress();
+      });
+      player.on("ended", ({ percent }) => {
+        this.progress = Math.round(percent * 10);
+        this.setNewProgress();
+      });
+
+      const duration = await player.getDuration();
+      this.duration = duration;
+    },
+    setNewProgress() {
+      console.log("ACTUALIZANDO ESTADO");
+      this.updateProgress({
+        videoId: this.$route.params.id,
+        progress: this.progress,
+      });
+    },
   },
 };
 </script>
