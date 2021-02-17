@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <ListaContenido />
+      <ListaContenido  />
     </div>
   </div>
 </template>
@@ -36,12 +36,15 @@
 import ListaContenido from "@/components/curso/ListaContenido";
 import Comentarios from "@/components/curso/Comentarios";
 
+
 export default {
+  layout: "clase",
   components: {
     ListaContenido,
     Comentarios,
   },
-  layout: "clase",
+
+  
 };
 </script>
 
