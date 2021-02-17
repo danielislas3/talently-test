@@ -110,7 +110,7 @@ export const mutations = {
   updateComment(state, payload) {
     const index = state.comentarios.findIndex(comment => comment.id == payload.id)
     console.log('index: ', index);
-    
+
     state.comentarios[index].content = payload.content
   },
 }
